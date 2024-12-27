@@ -1,99 +1,150 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# ToDo App Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is the backend for the ToDo App, built using NestJS with GraphQL for API management. The backend is secured using JWT authentication and includes all necessary steps for setup and deployment.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## Features
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **GraphQL API** for managing todos
+- **JWT Authentication** to secure API endpoints
+- Support for creating, updating, deleting, and fetching todos
+- Environment variable management for secret configuration
 
-## Project setup
+---
 
-```bash
-$ npm install
-```
+## Prerequisites
 
-## Compile and run the project
+Ensure the following tools are installed on your system:
 
-```bash
-# development
-$ npm run start
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Git](https://git-scm.com/)
 
-# watch mode
-$ npm run start:dev
+---
 
-# production mode
-$ npm run start:prod
-```
+## Setup Instructions
 
-## Run tests
+### 1. Clone the Repository
 
-```bash
-# unit tests
-$ npm run test
+git clone https://github.com/jakesisson/todo-app-backend.git
 
-# e2e tests
-$ npm run test:e2e
+### Navigate into the project directory:
 
-# test coverage
-$ npm run test:cov
-```
+cd todo-app-backend
 
-## Deployment
+### 2. Install Dependencies
+Run the following command to install all required dependencies:
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+npm install
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### 3. Generate Environment Variables
+To ensure the backend operates securely, generate a .env file with a secure JWT_SECRET:
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+Run the setup script:
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+node setup.js
 
-## Resources
+This will create a .env file with a secure JWT_SECRET. If the file already exists, the script will leave it unchanged.
 
-Check out a few resources that may come in handy when working with NestJS:
+### 4. Verify .env Configuration
+Ensure the .env file is generated in the root directory and contains:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+JWT_SECRET=<your-generated-secret>
+Note: Replace <your-generated-secret> if you prefer to manually set the secret.
 
-## Support
+### 5. Start the Development Server
+Run the following command to start the server in development mode:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+npm run start:dev
+The backend will run on http://localhost:3000.
 
-## Stay in touch
+### 6. Test the API
+You can access the GraphQL playground at:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+http://localhost:3000/graphql
 
-## License
+### File Structure
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+.
+├── src/
+│   ├── auth/             # Authentication module
+│   ├── todo/             # Todo module with resolver, service, and entity
+│   ├── main.ts           # Application entry point
+├── .env                  # Environment variables
+├── .env.example          # Example environment file
+├── setup.js              # Script to generate .env file
+├── README.md             # Documentation
+
+
+## Scripts
+### Start in Development Mode:
+
+npm run start:dev
+
+### Start in Production Mode:
+
+npm run start:prod
+
+### Run Tests:
+
+npm test
+
+### Generate a New .env File:
+
+node setup.js
+### Additional Notes
+Ensure that .env is ignored by Git. The .gitignore file already contains .env.
+
+If you encounter issues pushing to the repository, ensure your local branch is in sync with the remote by running:
+
+git pull origin main --rebase
+
+
+## Additional Instructions for macOS Users
+
+If you're using macOS, follow these specific instructions to ensure a smooth setup:
+
+### Node.js and npm Installation
+
+- macOS users can install Node.js and npm via [Homebrew](https://brew.sh/):
+
+  brew install node
+
+- Alternatively, use nvm (Node Version Manager):
+brew install nvm
+mkdir ~/.nvm
+echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
+echo '[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"' >> ~/.zshrc
+source ~/.zshrc
+nvm install node
+
+File Permissions
+If you encounter permissions issues with node setup.js or npm install, use the following command to fix permissions:
+
+sudo chmod -R 755 .
+
+Development Server
+By default, macOS may use ports for other services. If port 3000 is already in use, you can specify an alternative port when starting the server:
+
+bash
+Copy code
+PORT=4000 npm run start:dev
+Access the backend at http://localhost:4000.
+
+Install Homebrew (Optional)
+Homebrew is a popular package manager for macOS. If not installed, you can get it using:
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+Notes for macOS Users
+macOS handles most development tasks similarly to other platforms, but these instructions will help you avoid common pitfalls.
+Ensure that the .env file generated by the setup script is properly placed in the root of your project directory before starting the server.
+When switching between Node.js versions, use nvm use <version> to ensure compatibility with the project's dependencies.
+
+
+
+
+
+
+
