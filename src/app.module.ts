@@ -16,7 +16,10 @@ import { TodoResolver } from './todo/todo.resolver';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true, // Auto-generate GraphQL schema
-      context: ({ req }) => ({ req }), // Pass the request object to the context for authentication
+      context: ({ req }) => {
+        console.log('Incoming Authorization Header:', req.headers.authorization); // Debug log
+        return { req }; // Pass the request object to the context for authentication
+      },
     }),
     AuthModule, // Import authentication module
   ],
